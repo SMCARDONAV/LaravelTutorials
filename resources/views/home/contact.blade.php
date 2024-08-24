@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('title', 'Contact Us - Online Store')
 @section('subtitle', 'Contact')
