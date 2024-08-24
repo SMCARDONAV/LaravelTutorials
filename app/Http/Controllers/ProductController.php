@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -18,9 +19,15 @@ class ProductController extends Controller
         return view('product.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View
+    public function show(string $id): View|RedirectResponse
     {
         $viewData = [];
+        try {
+            $product = Product::findOrFail($id);
+
+        } catch (\Exception $e) {
+            return redirect()->route('home.index');
+        }
         $product = Product::findOrFail($id);
         $viewData['title'] = $product['name'].' - Online Store';
         $viewData['subtitle'] = $product['name'].' - Product information';
