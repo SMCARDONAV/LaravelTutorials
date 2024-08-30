@@ -8,8 +8,8 @@ class AboutController extends Controller
     {
         $data1 = 'About us - Online Store';
         $data2 = 'About us';
-        $description = 'This is an about page ...';
-        $author = 'Developed by: Your Name';
+        $description = 'This is an about page sports equipment';
+        $author = 'Developed by: Sara Cardona';
 
         return view('home.about')
             ->with('title', $data1)

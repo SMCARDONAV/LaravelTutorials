@@ -44,13 +44,10 @@ class ProductController extends Controller
         return view('product.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): \Illuminate\Http\RedirectResponse
+    public function save(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-        ]);
 
+        Product::validate($request);
         Product::create($request->only(['name', 'price']));
 
         return back();
