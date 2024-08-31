@@ -23,11 +23,6 @@ class Comment extends Model
         return $this->attributes['id'];
     }
 
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function getDescription(): string
     {
         return $this->attributes['description'];
@@ -41,11 +36,6 @@ class Comment extends Model
     public function getProductId(): int
     {
         return $this->attributes['product_id'];
-    }
-
-    public function setProductId(int $pId): void
-    {
-        $this->attributes['product_id'] = $pId;
     }
 
     public function product(): BelongsTo

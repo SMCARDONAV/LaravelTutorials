@@ -21,19 +21,19 @@ class ProductController extends Controller
 
     public function show(string $id): View|RedirectResponse
     {
-        $viewData = [];
         try {
-            $product = Product::findOrFail($id);
 
+            $product = Product::with('comments')->findOrFail($id);
+
+            $viewData = [];
+            $viewData['title'] = $product->name.' - Online Store';
+            $viewData['subtitle'] = $product->name.' - Product information';
+            $viewData['product'] = $product;
+
+            return view('product.show')->with('viewData', $viewData);
         } catch (\Exception $e) {
             return redirect()->route('home.index');
         }
-        $product = Product::findOrFail($id);
-        $viewData['title'] = $product['name'].' - Online Store';
-        $viewData['subtitle'] = $product['name'].' - Product information';
-        $viewData['product'] = $product;
-
-        return view('product.show')->with('viewData', $viewData);
     }
 
     public function create(): View
