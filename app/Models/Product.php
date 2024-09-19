@@ -66,6 +66,7 @@ class Product extends Model
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric|gt:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 }

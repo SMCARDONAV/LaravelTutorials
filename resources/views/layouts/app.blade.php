@@ -32,7 +32,7 @@
                     @endguest
 
                     @auth
-                        <a class="nav-link active" href="{{ route('product.create') }}">Create Product</a>
+                        <!-- <a class="nav-link active" href="{{ route('product.create') }}">Create Product</a> -->
                         <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
                             <a role="button" class="nav-link active" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
                             @csrf
